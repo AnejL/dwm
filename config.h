@@ -6,21 +6,43 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
-static const char *fonts[]          = { "IBM Plex Mono:size=13" };
-static const char dmenufont[]       = "IBM Plex Mono:size=13";
+/*
+static const char *fonts[]          = { "Mononoki:style=Regular:size=12" };
+static const char dmenufont[]       = "Mononoki:style=Regular:size=12";
+*/
+
+static const char *fonts[]          = { "IBM Plex Mono:style=Regular:size=12" };
+//static const char *fonts[]          = { "ZX Spectrum 7:pixelsize=35:antialias=false:autohint=false" };
+
+static const char dmenufont[]       = "IBM Plex Mono:style=Regular:size=12";
 
 static const int gappx				= 15;
 
+/*
 static const char col_gray1[]       = "#292d3e";
-static const char col_gray2[]       = "#000000"; /* border color unfocused windows */
+static const char col_gray2[]       = "#000000";
 static const char col_gray3[]       = "#96b5b4";
 static const char col_gray4[]       = "#c0c5ce";
-static const char col_cyan[]        = "#924441"; /* border color focused windows and tags */
+static const char col_cyan[]        = "#924441";
+
+static const char col_gray1[]       = "#292d3e";
+static const char col_gray2[]       = "#434758";
+static const char col_gray3[]       = "#bbbbbb";
+static const char col_gray4[]       = "#eeeeee";
+static const char col_cyan[]        = "#f07178";
+*/
+
+static const char col_gray1[]       = "#2e3440";
+static const char col_gray2[]       = "#4c566a";
+static const char col_gray3[]       = "#bbbbbb";
+static const char col_gray4[]       = "#eeeeee";
+static const char col_cyan[]        = "#81a1c1";
+
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray4, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeSel]  = { col_gray4, col_gray2,  col_cyan  },
 };
 
 /* tagging */
@@ -72,7 +94,8 @@ static const char *utermcmd[]  = { "urxvt", NULL };
 static const char *refbarcmd[]  = { "refbar", NULL };
 static const char *stermcmd[]  = { "st", NULL };
 static const char *discordcmd[]  = { "discord", NULL };
-static const char *tabbedsurfcmd[] = { "tabbed", "surf", "-pe", NULL };
+static const char *firefoxcmd[]  = { "firefox", NULL };
+// static const char *tabbedsurfcmd[] = { "tabbed", "surf", "-pe", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -106,7 +129,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_zcaron,  setgaps,        {.i = -3 } },
 	{ MODKEY,                       XK_dstroke, setgaps,        {.i = +3 } },
 	{ MODKEY|ShiftMask,             XK_zcaron,  setgaps,        {.i = 0  } },
-	{ MODKEY,	            		XK_scaron,  spawn,        	{.v = tabbedsurfcmd } },
+	{ MODKEY,	            		XK_scaron,  spawn,        	{.v = firefoxcmd } },
 	{ MODKEY|ShiftMask,        		XK_d,  		spawn,        	{.v = discordcmd } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
