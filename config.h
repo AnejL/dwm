@@ -19,30 +19,23 @@ static const char dmenufont[]       = "IBM Plex Mono:style=Regular:size=12";
 static const int gappx				= 15;
 
 /*
-static const char col_gray1[]       = "#292d3e";
-static const char col_gray2[]       = "#000000";
-static const char col_gray3[]       = "#96b5b4";
-static const char col_gray4[]       = "#c0c5ce";
-static const char col_cyan[]        = "#924441";
-
-static const char col_gray1[]       = "#292d3e";
-static const char col_gray2[]       = "#434758";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#f07178";
-*/
-
 static const char col_gray1[]       = "#2e3440";
 static const char col_gray2[]       = "#4c566a";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#81a1c1";
+*/
 
+static const char col_gray[]   = "#2b2d37"; // background grey
+static const char col_white[]   = "#e1eceb"; // foreground white
+static const char col_pink[]   = "#FEB1BE"; // accent pink
+static const char col_blue[]   = "#91BEBB"; // accent blue
 
-static const char *colors[][3]      = {
+static const char *colors[][4]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray4, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_gray2,  col_cyan  },
+	[SchemeNorm] = { col_white, col_gray, col_gray },
+	[SchemeSel]  = { col_white, col_blue,  col_pink },
+	[SchemeBar]  = { col_pink, col_gray,  col_pink },
 };
 
 /* tagging */
@@ -77,7 +70,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod4Mask
+#define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -89,7 +82,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray, "-nf", col_white, "-sb", col_pink, "-sf", col_white, NULL };
 static const char *utermcmd[]  = { "urxvt", NULL };
 static const char *refbarcmd[]  = { "refbar", NULL };
 static const char *stermcmd[]  = { "st", NULL };
