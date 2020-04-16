@@ -29,13 +29,14 @@ static const char col_cyan[]        = "#81a1c1";
 static const char col_gray[]   = "#2b2d37"; // background grey
 static const char col_white[]   = "#e1eceb"; // foreground white
 static const char col_pink[]   = "#FEB1BE"; // accent pink
+static const char col_pink_dark[]   = "#D48CB3"; // accent pink
 static const char col_blue[]   = "#91BEBB"; // accent blue
 
 static const char *colors[][4]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_white, col_gray, col_gray },
 	[SchemeSel]  = { col_white, col_blue,  col_pink },
-	[SchemeBar]  = { col_pink, col_gray,  col_pink },
+	[SchemeBar]  = { col_pink, col_gray,  col_pink_dark },
 };
 
 /* tagging */
