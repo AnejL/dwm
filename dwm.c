@@ -59,7 +59,7 @@
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
-enum { SchemeNorm, SchemeSel, SchemeBar }; /* color schemes */
+enum { SchemeNorm, SchemeSel, SchemeBar, SchemeOpenHighlight, SchemeOpen }; /* color schemes */
 enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
@@ -727,10 +727,12 @@ drawbar(Monitor *m)
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
 		drw_text(drw, x, 0, w, bh, wdelta + lrpad / 2, (selmon->alttag ? tagsalt[i] : tags[i]), urg & 1 << i);
 		if (occ & 1 << i)
-			drw_rect(drw, x + boxw, 0, w - ( 2 * boxw + 1), boxw * 0.4,
+		{
+			drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeOpenHighlight : SchemeOpen]);
+			drw_rect(drw, x, 0, w, boxw * 0.4,
 			    m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
 			    urg & 1 << i);
-
+		}
 		x += w;
 	}
 	w = blw = TEXTW(m->ltsymbol);

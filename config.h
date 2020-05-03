@@ -4,39 +4,29 @@
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
-
-/*
-static const char *fonts[]          = { "Mononoki:style=Regular:size=12" };
-static const char dmenufont[]       = "Mononoki:style=Regular:size=12";
-*/
+static const int topbar             = 0;        /* 0 means bottom bar */
 
 static const char *fonts[]          = { "IBM Plex Mono:style=Regular:size=12" };
-//static const char *fonts[]          = { "ZX Spectrum 7:pixelsize=35:antialias=false:autohint=false" };
 
 static const char dmenufont[]       = "IBM Plex Mono:style=Regular:size=12";
 
 static const int gappx				= 15;
 
-/*
-static const char col_gray1[]       = "#2e3440";
-static const char col_gray2[]       = "#4c566a";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#81a1c1";
-*/
-
-static const char col_gray[]   = "#2b2d37"; // background grey
-static const char col_white[]   = "#e1eceb"; // foreground white
-static const char col_pink[]   = "#FEB1BE"; // accent pink
-static const char col_pink_dark[]   = "#D48CB3"; // accent pink
-static const char col_blue[]   = "#91BEBB"; // accent blue
+static const char col_paper_white[]   = "#fcfcfc"; // light white (selected window text)
+static const char col_cardboard_gray[]   = "#eff0f1"; // dark white (button light hue)
+static const char col_alternate_grey[]   = "#bdc3c7";  // light grey (button highlihgt)
+static const char col_charcoal_gray[]   = "#31363b"; // light black (selected window highlight)
+static const char col_shade_black[]   = "#232629";  // full black (normal foreground)
+static const char col_plasma_blue[]   = "#3daee9"; // full blue (button highlihgt)
+static const char col_hover_blue[]   = "#93cee9";   // light blue (button bg)
 
 static const char *colors[][4]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_white, col_gray, col_gray },
-	[SchemeSel]  = { col_white, col_blue,  col_pink },
-	[SchemeBar]  = { col_pink, col_gray,  col_pink_dark },
+	[SchemeNorm] = { col_charcoal_gray, col_paper_white, col_charcoal_gray },
+	[SchemeSel]  = { col_charcoal_gray, col_hover_blue,  col_hover_blue },
+	[SchemeOpenHighlight]  = { col_plasma_blue, col_plasma_blue,  col_charcoal_gray },
+	[SchemeOpen]  = { col_alternate_grey, col_alternate_grey,  col_charcoal_gray },
+	[SchemeBar]  = { col_charcoal_gray, col_paper_white,  col_charcoal_gray },
 };
 
 /* tagging */
@@ -83,7 +73,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray, "-nf", col_white, "-sb", col_pink, "-sf", col_white, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_charcoal_gray, "-nf", col_paper_white, "-sb", col_hover_blue, "-sf", col_shade_black, NULL };
 static const char *utermcmd[]  = { "urxvt", NULL };
 static const char *refbarcmd[]  = { "refbar", NULL };
 static const char *stermcmd[]  = { "st", NULL };
